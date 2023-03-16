@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>Modificar empleado</h1>
+<mat-form-field class="example-form-field">
+  <mat-label>Nombre: </mat-label>
+  <input matInput type="text" [(ngModel)]="nombre">
+  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field class="example-form-field">
+  <mat-label>Apellido:</mat-label>
+  <input matInput type="text" [(ngModel)]="apellido">
+  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field class="example-form-field">
+  <mat-label>Direccion:</mat-label>
+  <input matInput type="text" [(ngModel)]="direccion">
+  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field class="example-form-field">
+  <mat-label>Telefono:</mat-label>
+  <input matInput type="text" [(ngModel)]="telefono">
+  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field class="example-form-field">
+  <mat-label>Salario:</mat-label>
+  <input matInput type="text" [(ngModel)]="salario">
+  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<h4>Rol</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Selecciona Rol</mat-label>
+  <mat-select [(ngModel)]="rolSelect">
+    <mat-option *ngFor="let rol of roles" [value]="rol.idRol">
+      {{ rol.nombre }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+
+
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="save()">Guardar</button>
+</div>

@@ -1,0 +1,60 @@
+
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Id Empleado: </mat-label>
+    <input matInput type="text" [(ngModel)]="nombre">
+    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Cantidad de entregas: </mat-label>
+    <input matInput type="text" [(ngModel)]="cantidadEntregas">
+    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+
+  <table mat-table [dataSource]="datosTabla">
+
+    <!-- Columna Total Sueldo -->
+    <ng-container matColumnDef="totalSueldo">
+      <th mat-header-cell *matHeaderCellDef>Total Sueldo</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.total_sueldo_out }}</td>
+    </ng-container>
+  
+    <!-- Columna Total Sueldo por Entregas -->
+    <ng-container matColumnDef="totalSueldoEntregas">
+      <th mat-header-cell *matHeaderCellDef>Total Sueldo por Entregas</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.total_x_entregas_out }}</td>
+    </ng-container>
+  
+    <!-- Columna Total Bonus -->
+    <ng-container matColumnDef="totalBonus">
+      <th mat-header-cell *matHeaderCellDef>Total Bonus</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.total_x_bonos_out }}</td>
+    </ng-container>
+  
+    <!-- Columna ISR Retención -->
+    <ng-container matColumnDef="isrRetencion">
+      <th mat-header-cell *matHeaderCellDef>ISR Retención</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.isr_out }}</td>
+    </ng-container>
+  
+    <!-- Columna Vales -->
+    <ng-container matColumnDef="vales">
+      <th mat-header-cell *matHeaderCellDef>Vales</th>
+      <td mat-cell *matCellDef="let elemento">{{ elemento.vales_out }}</td>
+    </ng-container>
+  
+    <!-- Definición de las columnas en la tabla -->
+    <tr mat-header-row *matHeaderRowDef="columnasTabla"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnasTabla;"></tr>
+  </table>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-button color="primary" (click)="enviar()">Guardar</button>
+  </div>
